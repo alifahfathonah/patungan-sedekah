@@ -39,8 +39,8 @@ class AdminController extends Controller
 				$arrThemes = Utility::getCurrentTemplate('admin');
 				Yii::app()->theme = $arrThemes['folder'];
 				$this->layout = $arrThemes['layout'];
-			} else
-				throw new CHttpException(404, Yii::t('phrase', 'The requested page does not exist.'));
+				Utility::applyViewPath(__dir__);
+			}
 		} else
 			$this->redirect(Yii::app()->createUrl('site/login'));
 	}
@@ -64,28 +64,10 @@ class AdminController extends Controller
 	public function accessRules() 
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index'),
-				'users'=>array('*'),
-			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array(),
+				'actions'=>array('index','dashboard'),
 				'users'=>array('@'),
-				'expression'=>'isset(Yii::app()->user->level)',
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('dashboard'),
-				'users'=>array('@'),
-				'expression'=>'isset(Yii::app()->user->level) && in_array(Yii::app()->user->level, array(1,2))',
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array(),
-				'users'=>array('@'),
-				'expression'=>'isset(Yii::app()->user->level) && (Yii::app()->user->level == 1)',
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array(),
-				'users'=>array('admin'),
+				'expression'=>'in_array($user->level, array(1,2))',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -140,7 +122,7 @@ class AdminController extends Controller
 		$this->pageTitle = Yii::t('phrase', 'Welcome, $displayname', array('$displayname'=>Yii::app()->user->displayname));
 		$this->pageDescription = Yii::t('phrase', 'Welcome to your social network control panel. Here you can manage and modify every aspect of your social network. Directly below, you will find a quick snapshot of your social network including some useful statistics.');
 		$this->pageMeta = '';
-		$this->render('application.webs.admin.admin_dashboard', array(
+		$this->render('admin_dashboard', array(
 			'model'=>$model,			
 			'data'=>$data,
 			'pager'=>$pager,

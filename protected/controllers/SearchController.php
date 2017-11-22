@@ -38,9 +38,10 @@ class SearchController extends Controller
 		$arrThemes = Utility::getCurrentTemplate('public');
 		Yii::app()->theme = $arrThemes['folder'];
 		$this->layout = $arrThemes['layout'];
+		Utility::applyViewPath(__dir__);
 		
 		//load Lucene Library
-		Yii::import('application.vendors.*');
+		Yii::import('application.vendor.*');
 		require_once('Zend/Search/Lucene.php');
 		parent::init();
 	}
@@ -139,10 +140,10 @@ class SearchController extends Controller
 				$query = Zend_Search_Lucene_Search_QueryParser::parse($term);
 		
 				$this->pageTitleShow = true;
-				$this->pageTitle = 'Hasil Pencarian: '.$_GET['keyword'];
+				$this->pageTitle = Yii::t('phrase', 'Hasil Pencarian: $keyword', array('$keyword'=>$_GET['keyword']));
 				$this->pageDescription = '';
 				$this->pageMeta = '';				
-				$this->render('application.webs.search.front_result', compact(
+				$this->render('front_result', compact(
 					'results', 
 					'term', 
 					'query'

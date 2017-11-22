@@ -57,10 +57,10 @@ class MaintenanceController extends Controller
 		$setting = OmmuSettings::model()->findByPk(1,array(
 			'select' => 'construction_date, construction_text',
 		));
-		$this->pageTitle = 'Contruction';
+		$this->pageTitle = Yii::t('phrase', 'Contruction');
 		$this->pageDescription = '';
 		$this->pageMeta = '';
-		$this->render('application.webs.maintenance.front_index',array(
+		$this->render('front_index',array(
 			'setting'=>$setting,
 		));
 	}
@@ -74,11 +74,12 @@ class MaintenanceController extends Controller
 		$model = OmmuPages::model()->findByPk($id,array(
 			//'select' => '',
 		));
+
 		$this->pageTitle = Phrase::trans($model->name);
 		$this->pageDescription = Utility::shortText(Utility::hardDecode(Phrase::trans($model->desc)),300);
 		$this->pageMeta = '';
 		$this->pageImage = ($model->media != '' && $model->media_show == 1) ? Utility::getProtocol().'://'.Yii::app()->request->serverName.Yii::app()->request->baseUrl.'/public/page/'.$model->media : '';
-		$this->render('application.webs.maintenance.front_page',array(
+		$this->render('front_page',array(
 			'model'=>$model,
 		));
 	}
@@ -129,7 +130,7 @@ class MaintenanceController extends Controller
 			$this->pageTitle = isset($_GET['email']) ? Yii::t('phrase', 'Feedback Success') : Yii::t('phrase', 'Feedback');
 			$this->pageDescription = isset($_GET['email']) ? (isset($_GET['name']) ? Yii::t('phrase', 'Hi <strong>{name} ({email})</strong>, terimakasih telah menghubungi support kami.', array('{name}'=>$_GET['name'], '{email}'=>$_GET['email'])) : Yii::t('phrase', 'Hi <strong>{email}</strong>, terimakasih telah menghubungi support kami.', array('{email}'=>$_GET['email']))) : '';
 			$this->pageMeta = '';
-			$this->render('application.webs.maintenance.front_feedback',array(
+			$this->render('front_feedback',array(
 				'model'=>$model,
 				'user'=>$user,
 			));			
@@ -157,18 +158,16 @@ class MaintenanceController extends Controller
 			} else {
 				if(isset($_GET['enablesave']) && $_GET['enablesave'] == 1) {
 					if($model->save()) {
-						if($model->user_id == 0) {
+						if($model->user_id == 0)
 							$get = Yii::app()->controller->createUrl('subscribe', array('name'=>$model->email, 'email'=>$model->email));
-						} else {
+						else
 							$get = Yii::app()->controller->createUrl('subscribe', array('name'=>$model->user->displayname, 'email'=>$model->user->email));
-						}
 						echo CJSON::encode(array(
 							'type' => 5,
 							'get' => $get,
 						));
-					} else {
+					} else
 						print_r($model->getErrors());
-					}
 				}
 			}
 			Yii::app()->end();
@@ -186,7 +185,7 @@ class MaintenanceController extends Controller
 			$this->pageTitle = $title;
 			$this->pageDescription = $desc;
 			$this->pageMeta = '';
-			$this->render('application.webs.maintenance.front_subscribe',array(
+			$this->render('front_subscribe',array(
 				'model'=>$model,
 				'launch'=>$launch,
 			));
@@ -199,10 +198,10 @@ class MaintenanceController extends Controller
 	 */
 	public function actionSupport()
 	{	
-		$this->pageTitle = 'Support';
+		$this->pageTitle = Yii::t('phrase', 'Support');
 		$this->pageDescription = '';
 		$this->pageMeta = '';
-		$this->render('application.webs.maintenance.front_support');
+		$this->render('front_support');
 	}
 
 	

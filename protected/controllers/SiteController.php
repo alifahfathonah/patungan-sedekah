@@ -53,6 +53,7 @@ class SiteController extends Controller
 		$arrThemes = Utility::getCurrentTemplate('public');
 		Yii::app()->theme = $arrThemes['folder'];
 		$this->layout = $arrThemes['layout'];
+		Utility::applyViewPath(__dir__);
 		//$this->pageGuest = true;
 	}
 
@@ -67,12 +68,6 @@ class SiteController extends Controller
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('error','index','login','logout','analytics','sendemail'),
 				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array(),
-				'users'=>array('@'),
-				'expression'=>'isset(Yii::app()->user->level)',
-				//'expression'=>'isset(Yii::app()->user->level) && (Yii::app()->user->level != 1)',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -92,10 +87,11 @@ class SiteController extends Controller
 			if(Yii::app()->request->isAjaxRequest)
 				echo $error['message'];
 			else
-				$this->render('application.webs.site.front_error', $error);
+				$this->render('front_error', $error);
 		} else {
-			$this->render('application.webs.site.front_error', $error);
+			$this->render('front_error', $error);
 		}
+		Reports::insertReport($this->pageURL, $error['message']);
 	}
 
 	/**
@@ -119,14 +115,14 @@ class SiteController extends Controller
 			/* if(!Yii::app()->user->isGuest) {
 				$this->redirect(Yii::app()->createUrl('pose/site/index'));
 			} else {
-				$render = 'application.webs.site.front_index';
+				$render = 'front_index';
 			} */
 			
 			$this->sidebarShow = false;
 			$this->pageTitle = Yii::t('phrase', 'Home');
 			$this->pageDescription = '';
 			$this->pageMeta = '';
-			$this->render('application.webs.site.front_index', array(
+			$this->render('front_index', array(
 				'setting'=>$setting,
 			));
 			
@@ -176,7 +172,7 @@ class SiteController extends Controller
 		$this->pageTitle = Yii::t('phrase', 'Statistic');
 		$this->pageDescription = '';
 		$this->pageMeta = '';
-		$this->render('application.webs.site.front_analytics', array(
+		$this->render('front_analytics', array(
 			'model'=>$model,
 		));
 	}

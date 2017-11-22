@@ -1,123 +1,30 @@
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/timthumb.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/timthumb.php"
--------
-install
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/install" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/install"
--------
-libraries
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/libraries" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/libraries"
--------
-protected
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/.htaccess" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/.htaccess"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/yiic" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/yiic"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/yiic.bat" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/yiic.bat"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/yiic.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/yiic.php"
+ln -f "/Users/putrasudaryanto/htdocs/project_ommu_platform/timthumb.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/timthumb.php"
 -------
 protected/components
 =======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/components/Controller.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/Controller.php"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/components/ControllerApi.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/ControllerApi.php"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/components/UserIdentity.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/UserIdentity.php"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/components/admin" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/admin"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/components/plugin" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/plugin"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/components/system" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/system"
+ln -f "/Users/putrasudaryanto/htdocs/project_ommu_platform/protected/components/Controller.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/Controller.php"
+ln -f "/Users/putrasudaryanto/htdocs/project_ommu_platform/protected/components/ControllerApi.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/ControllerApi.php"
+ln -f "/Users/putrasudaryanto/htdocs/project_ommu_platform/protected/components/UserIdentity.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/UserIdentity.php"
 -------
-protected/controllers
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/controllers" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/controllers"
--------
-protected/extensions
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/extensions" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/extensions"
--------
-protected/messages
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/messages" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/messages"
--------
-protected/models
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/models/core" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/models/core"
--------
-protected/ommu
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/ommu" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/ommu"
--------
-protected/vendors
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/vendors" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendors"
--------
-protected/views
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_platform/protected/views" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/views"
--------
-themes
-=======
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_bootstrap/themes/ommu" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/themes/ommu"
 
 
 -------
-protected/modules
+protected\modules
 =======
+///gii///
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/gii_template" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/libraries/gii" 
+
+///core///
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_core" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/libraries/core" 
+
+///themes///
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_theme/ommu_backoffice" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/themes/ommu"
+
 ///users///
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/LICENSE" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/LICENSE"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/users.yaml" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/users.yaml"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/UsersModule.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/UsersModule.php"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/assets" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/assets"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/components" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/components"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/models" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/models"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/controllers/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/controllers/o" 
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/controllers/AdminController.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/controllers/AdminController.php" 
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/views/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/views/o"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_users/modules/users/views/admin" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/users/views/admin"
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_users" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendor/ommu/users" 
 
 ///report///
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_reports/modules/report/LICENSE" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/report/LICENSE"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_reports/modules/report/report.yaml" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/report/report.yaml"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_reports/modules/report/ReportModule.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/report/ReportModule.php"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_reports/modules/report/assets" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/report/assets"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_reports/modules/report/components" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/report/components"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_reports/modules/report/models" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/report/models"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_reports/modules/report/controllers/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/report/controllers/o"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_reports/modules/report/views/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/report/views/o"
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_report" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendor/ommu/report"
 
 ///support///
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_support/modules/support/LICENSE" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/support/LICENSE"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_support/modules/support/support.yaml" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/support/support.yaml"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_support/modules/support/SupportModule.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/support/SupportModule.php"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_support/modules/support/assets" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/support/assets"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_support/modules/support/components" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/support/components"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_support/modules/support/models" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/support/models"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_support/modules/support/controllers/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/support/controllers/o"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_support/modules/support/views/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/support/views/o"
-
-///article///
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_articles/modules/article/LICENSE" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/article/LICENSE"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_articles/modules/article/article.yaml" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/article/article.yaml"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_articles/modules/article/ArticleModule.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/article/ArticleModule.php"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_articles/modules/article/assets" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/article/assets"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_articles/modules/article/components" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/article/components"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_articles/modules/article/models" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/article/models"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_articles/modules/article/controllers/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/article/controllers/o"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_articles/modules/article/views/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/article/views/o"
-
-///banner///
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_banner/modules/banner/LICENSE" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/banner/LICENSE"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_banner/modules/banner/banner.yaml" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/banner/banner.yaml"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_banner/modules/banner/BannerModule.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/banner/BannerModule.php"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_banner/modules/banner/assets" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/banner/assets"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_banner/modules/banner/components" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/banner/components"
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_banner/modules/banner/models" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/banner/models"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_banner/modules/banner/controllers/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/banner/controllers/o"
---
-ln -s "/Users/putrasudaryanto/htdocs/_project_ommu_module_banner/modules/banner/views/o" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/modules/banner/views/o"
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_support" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendor/ommu/support"

@@ -7,7 +7,7 @@
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @copyright Copyright (c) 2012 Ommu Platform (opensource.ommu.co)
- * @link https://github.com/ommu/core
+ * @link https://github.com/ommu/ommu
  * @contact (+62)856-299-4114
  *
  */
@@ -38,6 +38,6 @@
 }?>
 
 <?php if($a == null)
-	echo Phrase::trans($model->name) != Utility::hardDecode(Phrase::trans($model->desc)) ? Utility::cleanImageContent(Phrase::trans($model->desc)) : '';
+	echo $model->title->message != Utility::hardDecode($model->description->message) ? Utility::cleanImageContent($model->description->message) : '';
 else 
 	echo $model->description;?>

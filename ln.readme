@@ -28,3 +28,9 @@ ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_report" "/Users
 
 ///support///
 ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_support" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendor/ommu/support"
+
+///article///
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_article" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendor/ommu/article"
+
+///banner///
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_banner" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendor/ommu/banner"

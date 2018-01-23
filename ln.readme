@@ -17,8 +17,7 @@ ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/gii_template" "/Users/
 ///core///
 ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_core" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/libraries/core" 
 
-///themes///
-ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_theme/ommu_backoffice" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/themes/ommu"
+=======
 
 ///users///
 ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_users" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendor/ommu/users" 
@@ -34,3 +33,11 @@ ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_article" "/User
 
 ///banner///
 ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_banner" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/vendor/ommu/banner"
+
+=======
+
+///ommu-backoffice///
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_theme/ommu_backoffice" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/themes/ommu"
+
+///dora///
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_theme/Dora" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/themes/dora"

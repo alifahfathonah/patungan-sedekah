@@ -27,6 +27,8 @@ return array(
 
 	// autoloading model and component classes
 	'import'=>array(
+		'system.vendors.zend-escaper.*',
+
 		// Model
 		'application.models.*',
 		'application.libraries.core.models.*',
@@ -60,6 +62,11 @@ return array(
 		//Ommu module/plugin handle
 		'moduleHandle' => array(
 			'class' => 'application.libraries.core.ommu.ModuleHandle'
+		),
+		
+		//Ommu theme handle
+		'themeHandle' => array(
+			'class' => 'application.libraries.core.ommu.ThemeHandle'
 		),
 
 		//move core message yii to protected

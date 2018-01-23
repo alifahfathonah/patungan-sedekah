@@ -124,14 +124,11 @@ class SiteController extends Controller
 	 */
 	public function actionLogin($token=null)
 	{
-		Yii::import('application.vendor.ommu.users.models.*');
-		Yii::import('application.vendor.ommu.users.models.view.*');
-		
 		$setting = OmmuSettings::model()->findByPk(1, array(
 			'select'=>'site_oauth, site_type',
 		));
 		
-		if(!Yii::app()->user->isGuest)
+		if(!Yii::app()->user->isGuest || ($setting->site_type == 0 && $setting->site_oauth == 0))
 			$this->redirect(array('site/index'));
 
 		$condition = true;
@@ -248,7 +245,9 @@ class SiteController extends Controller
 	 */
 	public function actionSendEmail($email='putra.sudaryanto@gmail.com', $name='Putra Sudaryanto', $subject='testing', $message='testing')
 	{
-		if(SupportMailSetting::sendEmail($email, $name, $subject, $message))
+		Yii::import('ext.phpmailer.Mailer');
+
+		if(Mailer::send($email, $name, $subject, $message))
 			echo 'send';
 		else 
 			echo 'notsend';

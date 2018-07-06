@@ -70,7 +70,7 @@ class Articles extends CActiveRecord
 	{
 		return array(
 			'sluggable' => array(
-				'class'=>'ext.yii-behavior-sluggable.SluggableBehavior',
+				'class'=>'ext.yii-sluggable.SluggableBehavior',
 				'columns' => array('title'),
 				'unique' => true,
 				'update' => true,

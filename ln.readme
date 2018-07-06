@@ -37,7 +37,7 @@ ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_banner" "/Users
 =======
 
 ///ommu-backoffice///
-ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_theme/ommu_backoffice" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/themes/ommu"
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_theme/backoffice" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/themes/backoffice"
 
 ///dora///
 ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_theme/Dora" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/themes/dora"

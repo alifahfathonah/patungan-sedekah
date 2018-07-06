@@ -54,7 +54,7 @@ class BannerCategory extends CActiveRecord
 	{
 		return array(
 			'sluggable' => array(
-				'class'=>'ext.yii-behavior-sluggable.SluggableBehavior',
+				'class'=>'ext.yii-sluggable.SluggableBehavior',
 				'columns' => array('title.en_us'),
 				'unique' => true,
 				'update' => true,

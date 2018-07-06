@@ -17,7 +17,7 @@
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
- * @copyright Copyright (c) 2012 Ommu Platform (opensource.ommu.co)
+ * @copyright Copyright (c) 2012 Ommu Platform (www.ommu.co)
  * @link https://github.com/ommu/ommu
  *
  *----------------------------------------------------------------------------------------------------------
@@ -49,27 +49,9 @@ class SiteController extends Controller
 	 */
 	public function init() 
 	{
-		$arrThemes = Utility::getCurrentTemplate('public');
+		$arrThemes = $this->currentTemplate('public');
 		Yii::app()->theme = $arrThemes['folder'];
 		$this->layout = $arrThemes['layout'];
-	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules() 
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('error','index','login','logout','analytics','sendemail'),
-				'users'=>array('*'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
 	}
 
 	/**
@@ -100,7 +82,7 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		
-		$setting = OmmuSettings::model()->findByPk(1,array(
+		$setting = OmmuSettings::model()->findByPk(1, array(
 			'select' => 'id, online',
 		));
 
@@ -220,14 +202,14 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-	
+
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
 	public function actionAnalytics()
 	{
-		$model = OmmuSettings::model()->findByPk(1,array(
+		$model = OmmuSettings::model()->findByPk(1, array(
 			'select' => 'site_url, analytic, analytic_id, analytic_profile_id',
 		));
 		

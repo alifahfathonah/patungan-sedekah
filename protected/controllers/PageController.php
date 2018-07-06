@@ -13,7 +13,7 @@
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
- * @copyright Copyright (c) 2012 Ommu Platform (opensource.ommu.co)
+ * @copyright Copyright (c) 2012 Ommu Platform (www.ommu.co)
  * @link https://github.com/ommu/ommu
  *
  *----------------------------------------------------------------------------------------------------------
@@ -33,27 +33,9 @@ class PageController extends Controller
 	 */
 	public function init() 
 	{
-		$arrThemes = Utility::getCurrentTemplate('public');
+		$arrThemes = $this->currentTemplate('public');
 		Yii::app()->theme = $arrThemes['folder'];
 		$this->layout = $arrThemes['layout'];
-	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules() 
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
 	}
 	
 	/**
@@ -70,13 +52,6 @@ class PageController extends Controller
 	 */
 	public function actionView($id=null, $static=null, $picture=null)
 	{
-		$arrThemes = Utility::getCurrentTemplate('public');
-		Yii::app()->theme = $arrThemes['folder'];
-		$this->layout = $arrThemes['layout'];
-		Utility::applyCurrentTheme($this->module);
-		
-		//$this->pageGuest = true;
-		
 		if($id == null) {
 			$criteria=new CDbCriteria;
 			$criteria->condition = 'publish = :publish';
@@ -90,16 +65,18 @@ class PageController extends Controller
 				),
 			));
 
+			//$this->pageGuest = true;
 			$this->pageTitle = Yii::t('phrase', 'Pages');
 			$this->pageDescription = '';
 			$this->pageMeta = '';
-			$this->render('front_index',array(
+			$this->render('front_index', array(
 				'dataProvider'=>$dataProvider,
 			));
 			
 		} else {
 			if($static == null) {
 				$model=$this->loadModel($id);
+				OmmuPageViews::insertView($model->page_id);
 				
 				$title = $model->title->message;
 				$description = $model->description->message;
@@ -109,7 +86,7 @@ class PageController extends Controller
 				$server = Utility::getConnected(Yii::app()->params['server_options']['bpad']);
 				if($server != 'neither-connected') {
 					if(in_array($server, Yii::app()->params['server_options']['localhost']))
-						$server = $server.'/bpadportal';			
+						$server = $server.'/bpadportal';
 					$url = $server.preg_replace('('.Yii::app()->request->baseUrl.')', '', Yii::app()->createUrl('api/page/detail'));
 					
 					$item = array(
@@ -123,7 +100,7 @@ class PageController extends Controller
 					//curl_setopt($ch,CURLOPT_HEADER, true);
 					curl_setopt($ch, CURLOPT_POST, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS, $items);
-					$output=curl_exec($ch);	
+					$output=curl_exec($ch);
 
 					$model = json_decode($output);
 				}
@@ -136,12 +113,13 @@ class PageController extends Controller
 			if(($static == null && $model == null) || ($static != null && $model->success == '0'))
 				throw new CHttpException(404, Yii::t('phrase', 'The requested page does not exist.'));
 			
+			//$this->pageGuest = true;
 			$this->pageTitleShow = true;
 			$this->pageTitle = $title;
 			$this->pageDescription = Utility::shortText(Utility::hardDecode($description), 200);
 			$this->pageMeta = '';
 			$this->pageImage = $image;
-			$this->render('front_view',array(
+			$this->render('front_view', array(
 				'model'=>$model,
 				'static'=>$static,
 				'picture'=>$picture,

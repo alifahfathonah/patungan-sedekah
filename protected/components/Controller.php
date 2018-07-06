@@ -5,20 +5,16 @@
  * 
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
- * @copyright Copyright (c) 2012 Ommu Platform (opensource.ommu.co)
+ * @copyright Copyright (c) 2012 Ommu Platform (www.ommu.co)
  * @link https://github.com/ommu/ommu
  *
  */
 
-$module = strtolower(Yii::app()->controller->module->id);
-$controller = strtolower(Yii::app()->controller->id);
-$action = strtolower(Yii::app()->controller->action->id);
-$currentAction = strtolower(Yii::app()->controller->id.'/'.Yii::app()->controller->action->id);
-$currentModule = strtolower(Yii::app()->controller->module->id.'/'.Yii::app()->controller->id);
-$currentModuleAction = strtolower(Yii::app()->controller->module->id.'/'.Yii::app()->controller->id.'/'.Yii::app()->controller->action->id);
-
 class Controller extends CController
-{	
+{
+	use UtilityTrait;
+	use ThemeTrait;
+
 	// getAssetsUrl()
 	//	return the URL for this core's assets, performing the publish operation
 	//	the first time, and caching the result for subsequent use.
@@ -109,8 +105,13 @@ class Controller extends CController
 	public $dialogFixed = false;
 	public $dialogFixedClosed = array();
 
-	public function render($view, $data = null, $return = false) {
-		if ($this->beforeRender($view)) {
+	public function render($view, $data = null, $return = false)
+	{
+		$currentModule = strtolower(Yii::app()->controller->module->id.'/'.Yii::app()->controller->id);
+		$currentModuleAction = strtolower(Yii::app()->controller->module->id.'/'.Yii::app()->controller->id.'/'.Yii::app()->controller->action->id);
+
+		if($this->beforeRender($view))
+		{
 			/**
 			 * Custom condition
 			 ** 
@@ -124,8 +125,8 @@ class Controller extends CController
 			 */
 			 
 			// set language sessions
-			if(isset($_GET['lang']) && $_GET['lang'] != '')
-				Yii::app()->session['language'] = $_GET['lang'];
+			if(Yii::app()->getRequest()->getParam('lang') != '')
+				Yii::app()->session['language'] = Yii::app()->getRequest()->getParam('lang');
 	
 			// guest page
 			if($this->dialogFixed == true)
@@ -133,7 +134,7 @@ class Controller extends CController
 		
 			// registers all meta tags
 			if(!Yii::app()->request->isAjaxRequest) {
-				$meta = OmmuMeta::model()->findByPk(1,array(
+				$meta = OmmuMeta::model()->findByPk(1, array(
 					'select' => 'office_on, google_on, twitter_on, facebook_on'
 				));
 				if($meta->office_on == 1)
@@ -166,7 +167,7 @@ class Controller extends CController
 	 */
 	protected function beforeRender($view)
 	{
-		$model = OmmuSettings::model()->findByPk(1,array(
+		$model = OmmuSettings::model()->findByPk(1, array(
 			'select' => 'site_title, site_keywords, site_description'
 		));
 		
@@ -182,8 +183,10 @@ class Controller extends CController
 		} else
 			$pageMeta = $model->site_keywords;
 		
-		if(!Yii::app()->request->isAjaxRequest) {
-			if(parent::beforeRender($view)) {
+		if(!Yii::app()->request->isAjaxRequest)
+		{
+			if(parent::beforeRender($view))
+			{
 				Yii::app()->clientScript->registerMetaTag(Utility::hardDecode($pageDescription), 'description');
 				Yii::app()->clientScript->registerMetaTag(Utility::hardDecode(strtolower($pageMeta)), 'keywords');
 				
@@ -222,7 +225,7 @@ class Controller extends CController
 		$this->pageTitle = $this->pageTitle ? $this->pageTitle : 'Titlenya Lupa..';
 				
 		// set page URL information
-		$this->pageURL = Utility::getProtocol().'://'.Yii::app()->request->serverName.Yii::app()->request->url;	
+		$this->pageURL = Utility::getProtocol().'://'.Yii::app()->request->serverName.Yii::app()->request->url;
 			
 		// set page Image information
 		if($this->pageImage == null) {
@@ -236,9 +239,7 @@ class Controller extends CController
 		if($this->theme == null)
 			$theme = $this->theme = Yii::app()->theme->name;
 		$themeInfo = Utility::getThemeInfo($theme);
-		//print_r($themeInfo);
 		$themeSetting = $themeInfo['settings'];
-		//print_r($themeSetting);
 		$this->themeSetting = $themeSetting;
 		
 		return true;
@@ -257,9 +258,8 @@ class Controller extends CController
 				echo $error['message'];
 			else
 				$this->render('front_error', $error);
-		} else {
+		} else
 			$this->render('front_error', $error);
-		}
 	}
  
 	public function getAssetsUrl()

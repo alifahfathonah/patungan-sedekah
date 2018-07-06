@@ -7,8 +7,8 @@
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
- * @copyright Copyright (c) 2012 Ommu Platform (opensource.ommu.co)
- * @link https://github.com/ommu/ommu
+ * @copyright Copyright (c) 2012 Ommu Platform (www.ommu.co)
+ * @link https://github.com/PutraSudaryanto/OmmuFirstSource
  *
  */
  
@@ -18,7 +18,7 @@
 	);
 ?>
 
-<?php if(!isset($_GET['email'])) {?>
+<?php if(!Yii::app()->getRequest()->getParam('email')) {?>
 	<div class="boxed" name="post-on">
 		<?php $form=$this->beginWidget('application.libraries.core.components.system.OActiveForm', array(
 			'id'=>'support-contacts-form',
@@ -41,13 +41,13 @@
 				echo $form->hiddenField($model,'user_id');
 				?>
 				
-				<?php if(Yii::app()->user->isGuest) {?>	
+				<?php if(Yii::app()->user->isGuest) {?>
 					<div class="clearfix">
-						<?php echo $form->textField($model,'displayname',array('maxlength'=>64, 'placeholder'=>$model->getAttributeLabel('displayname'))); ?>
+						<?php echo $form->textField($model,'displayname', array('maxlength'=>64, 'placeholder'=>$model->getAttributeLabel('displayname'))); ?>
 						<?php echo $form->error($model,'displayname'); ?>
 					</div>
 					<div class="clearfix">
-						<?php echo $form->textField($model,'email',array('maxlength'=>32, 'placeholder'=>$model->getAttributeLabel('email'))); ?>
+						<?php echo $form->textField($model,'email', array('maxlength'=>32, 'placeholder'=>$model->getAttributeLabel('email'))); ?>
 						<?php echo $form->error($model,'email'); ?>
 					</div>
 				<?php } else {
@@ -64,12 +64,12 @@
 				<?php }?>
 				
 				<div class="clearfix">
-					<?php echo $form->textField($model,'subject',array('maxlength'=>64, 'placeholder'=>$model->getAttributeLabel('subject'))); ?>
+					<?php echo $form->textField($model,'subject', array('maxlength'=>64, 'placeholder'=>$model->getAttributeLabel('subject'))); ?>
 					<?php echo $form->error($model,'subject'); ?>
 				</div>
 
 				<div class="clearfix">
-					<?php echo $form->textArea($model,'message',array('rows'=>6, 'cols'=>50, 'class'=> 'small', 'placeholder'=>$model->getAttributeLabel('message'))); ?>
+					<?php echo $form->textArea($model,'message', array('rows'=>6, 'cols'=>50, 'class'=> 'small', 'placeholder'=>$model->getAttributeLabel('message'))); ?>
 					<?php echo $form->error($model,'message'); ?>
 				</div>
 
@@ -78,7 +78,7 @@
 				</div>
 
 			</fieldset>
-		<?php $this->endWidget();?>	
+		<?php $this->endWidget();?>
 	</div>
 
 <?php } else {?>

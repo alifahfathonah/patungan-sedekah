@@ -6,7 +6,7 @@
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
- * @copyright Copyright (c) 2012 Ommu Platform (opensource.ommu.co)
+ * @copyright Copyright (c) 2012 Ommu Platform (www.ommu.co)
  * @link https://github.com/ommu/ommu
  *
  */
@@ -23,16 +23,16 @@
 	else
 		$images = $model->media_image;
 		
-	if($this->adsSidebar == true) {
+	if($this->sidebarShow == true) {
 		if(($a == null && $model->media_type == 1) || ($a != null && $model->media_type == 'large'))
-			echo '<img class="largemag" src="'.Utility::getTimThumb($images, 600, 900, 3).'" alt="">';
+			echo '<img class="largemag" src="'.Utility::getTimThumb($images, 600, 900, 3).'" alt="'.$model->title->message.'">';
 		else
-			echo '<img class="mediummag" src="'.Utility::getTimThumb($images, 270, 500, 3).'" alt="">';
+			echo '<img class="mediummag" src="'.Utility::getTimThumb($images, 270, 500, 3).'" alt="'.$model->title->message.'">';
 	} else {
 		if(($a == null && $model->media_type == 1) || ($a != null && $model->media_type == 'large'))
-			echo '<img class="largemag" src="'.Utility::getTimThumb($images, 1280, 1024, 3).'" alt="">';
+			echo '<img class="largemag" src="'.Utility::getTimThumb($images, 1280, 1024, 3).'" alt="'.$model->title->message.'">';
 		else
-			echo '<img class="mediummag" src="'.Utility::getTimThumb($images, 270, 500, 3).'" alt="">';
+			echo '<img class="mediummag" src="'.Utility::getTimThumb($images, 270, 500, 3).'" alt="'.$model->title->message.'">';
 	}
 }?>
 

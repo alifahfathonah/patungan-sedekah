@@ -1,21 +1,13 @@
-ln -f "/Users/putrasudaryanto/htdocs/project_ommu_platform/timthumb.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/timthumb.php"
--------
-protected/components
 =======
-ln -f "/Users/putrasudaryanto/htdocs/project_ommu_platform/protected/components/Controller.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/Controller.php"
-ln -f "/Users/putrasudaryanto/htdocs/project_ommu_platform/protected/components/ControllerApi.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/ControllerApi.php"
-ln -f "/Users/putrasudaryanto/htdocs/project_ommu_platform/protected/components/UserIdentity.php" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/components/UserIdentity.php"
--------
 
-
--------
-protected\modules
-=======
 ///gii///
 ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/gii_template" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/libraries/gii" 
 
 ///core///
 ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/module_core" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/libraries/core" 
+
+///traits///
+ln -sf "/Users/putrasudaryanto/htdocs/project_ommu_module/yii-traits" "/Users/putrasudaryanto/htdocs/_client/patungansedekah.com/protected/libraries/yii-traits" 
 
 =======
 

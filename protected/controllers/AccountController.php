@@ -18,8 +18,8 @@
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
- * @copyright Copyright (c) 2012 Ommu Platform (opensource.ommu.co)
- * @link https://github.com/ommu/ommu
+ * @copyright Copyright (c) 2012 Ommu Platform (www.ommu.co)
+ * @link https://github.com/PutraSudaryanto/OmmuFirstSource
  *
  *----------------------------------------------------------------------------------------------------------
  */
@@ -38,31 +38,9 @@ class AccountController extends Controller
 	 */
 	public function init() 
 	{
-		$arrThemes = Utility::getCurrentTemplate('public');
+		$arrThemes = $this->currentTemplate('public');
 		Yii::app()->theme = $arrThemes['folder'];
 		$this->layout = $arrThemes['layout'];
-	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules() 
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('signup','forgot','reset','verify','email','username'),
-				'users'=>array('*'),
-			),
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index'),
-				'users'=>array('@'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
 	}
 	
 	/**
@@ -210,10 +188,10 @@ class AccountController extends Controller
 						
 						if($model->save()) {
 							$forgot->publish = 0;
-							$forgot->modified_id = !Yii::app()->user->isGuest ? Yii::app()->user->id : 0;
+							$forgot->modified_id = !Yii::app()->user->isGuest ? Yii::app()->user->id : null;
 
 							if($forgot->update())
-								$this->redirect(Yii::app()->controller->createUrl('reset',array('success'=>'true'))); 
+								$this->redirect(Yii::app()->controller->createUrl('reset', array('success'=>'true'))); 
 						}
 					}
 
@@ -315,10 +293,10 @@ class AccountController extends Controller
 					
 					if($model->update()) {
 						$verify->publish = 0;
-						$verify->modified_id = !Yii::app()->user->isGuest ? Yii::app()->user->id : 0;
+						$verify->modified_id = !Yii::app()->user->isGuest ? Yii::app()->user->id : null;
 
 						if($verify->update())
-							$this->redirect(Yii::app()->controller->createUrl('email',array('success'=>'true')));
+							$this->redirect(Yii::app()->controller->createUrl('email', array('success'=>'true')));
 					}
 	
 				} else {

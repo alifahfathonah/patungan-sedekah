@@ -8,7 +8,7 @@
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
- * @copyright Copyright (c) 2012 Ommu Platform (opensource.ommu.co)
+ * @copyright Copyright (c) 2012 Ommu Platform (www.ommu.co)
  * @link https://github.com/ommu/ommu
  *
  */
@@ -27,8 +27,6 @@ return array(
 
 	// autoloading model and component classes
 	'import'=>array(
-		'system.vendors.zend-escaper.*',
-
 		// Model
 		'application.models.*',
 		'application.libraries.core.models.*',
@@ -37,14 +35,12 @@ return array(
 		'application.components.*',
 		'application.libraries.core.components.public.*',
 		'application.libraries.core.components.system.*',
+		'application.libraries.yii-traits.*',
 
 		// Module Model
 		'application.vendor.ommu.report.models.*',
-		'application.vendor.ommu.report.models.view.*',
 		'application.vendor.ommu.support.models.*',
-		'application.vendor.ommu.support.models.view.*',
 		'application.vendor.ommu.users.models.*',
-		'application.vendor.ommu.users.models.view.*',
 
 		// Module Components
 		'application.vendor.ommu.report.components.*',
